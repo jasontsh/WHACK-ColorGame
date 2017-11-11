@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.whack.janson.colorgame.MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:textSize="30sp"
+        android:text="@string/title"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/question_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle"
+        android:contentDescription="@string/question_circle"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"/>
+
+    <ImageView
+        android:id="@+id/circle_l"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_small"
+        android:contentDescription="@string/circle_choice"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/question_circle"
+        android:layout_alignStart="@+id/title" />
+
+    <ImageView
+        android:id="@+id/circle_r"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_small"
+        android:contentDescription="@string/circle_choice"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/question_circle"
+        android:layout_alignEnd="@+id/title" />
+
+    <View
+        android:id="@+id/center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"/>
+
+    <View
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/question_circle"
+        android:layout_toStartOf="@id/center"
+        />
+
+    <View
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/question_circle"
+        android:layout_toEndOf="@id/center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12:34"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

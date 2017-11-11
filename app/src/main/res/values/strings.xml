@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ColorGame</string>
+    <string name="title">Tap on the most similar color</string>
+    <string name="question_circle">This is the reference circle</string>
+    <string name="circle_choice">This is the circle you can click onto</string>
+</resources>
