@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         questionCircle = (ImageView) findViewById(R.id.question_circle);
-        questionCircle.getDrawable().setColorFilter(Color.RED, PorterDuff.Mode.DST_IN);
+        questionCircle.getDrawable().setColorFilter(Color.RED, PorterDuff.Mode.CLEAR);
+        questionCircle.getDrawable().setColorFilter(Color.RED, PorterDuff.Mode.ADD);
     }
 }
