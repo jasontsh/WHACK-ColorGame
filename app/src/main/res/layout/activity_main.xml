@@ -10,8 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:textSize="30sp"
+        android:layout_marginTop="100dp"
         android:text="@string/title"
         android:gravity="center"/>
 
@@ -24,6 +26,17 @@
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        android:layout_alignStart="@id/question_circle"
+        android:layout_alignTop="@id/question_circle"
+        android:textSize="54sp"
+        android:layout_alignBottom="@id/question_circle"
+        android:gravity="center"/>
 
     <ImageView
         android:id="@+id/circle_l"
@@ -70,9 +83,10 @@
         />
 
     <TextView
+        android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="12:34"
+        tools:text="8"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -80,5 +94,40 @@
         android:layout_marginEnd="22dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/life"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Life: 3"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="22dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/timer"/>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Score: 8"
+        android:textSize="20sp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/highscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="High Score: 8"
+        android:textSize="20sp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_below="@id/score"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
