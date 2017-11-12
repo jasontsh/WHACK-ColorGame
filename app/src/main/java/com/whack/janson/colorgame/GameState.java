@@ -24,8 +24,8 @@ public class GameState {
     public GameState(int startTime) {
         milliLeft = startTime * 1000;
         score = 0;
-        dist_margin = 80;
-        rand_margin = 40;
+        dist_margin = 20;
+        rand_margin = 80;
         life = 3;
         fullTime = startTime;
     }
