@@ -57,10 +57,11 @@ public class GameTask extends AsyncTask<Void, GameState, Integer> {
         while (gameState.getLife() > 0) {
             gameState.makeQuestion();
             publishProgress(gameState);
+            Log.d("TAG", gameState.getMilliLeft() + "");
             while(gameState.getMilliLeft() > 0) {
                 try{
-                    Thread.sleep(300);
-                    gameState.pastTime(300);
+                    Thread.sleep(100);
+                    gameState.pastTime(100);
                     if (isClickl || isClickr) {
                         gameState.setAnswer(isClickl);
                         isClickl = false;

@@ -24,47 +24,47 @@ public class GameState {
     public GameState(int startTime) {
         milliLeft = startTime * 1000;
         score = 0;
-        dist_margin = 20;
+        dist_margin = 80;
         rand_margin = 80;
         life = 3;
-        fullTime = startTime;
+        fullTime = startTime * 1000;
     }
 
     public void makeQuestion() {
-        int red, blue, green;
-        red = (int) (255 * Math.random());
-        blue = (int) (255 * Math.random());
-        green = (int) (255 * Math.random());
-        int lred = 0, lgreen = 0, lblue = 0;
-        while (lred + lgreen + lblue < 80) {
+        int red = 0, blue = 0, green = 0;
+        int lred, lgreen, lblue;
+        boolean directionr = Math.random() > 0.5;
+        boolean directiong = Math.random() > 0.5;
+        boolean directionb = Math.random() > 0.5;
+        while (red + green + blue < 50) {
+            red = (int) (255 * Math.random());
+            blue = (int) (255 * Math.random());
+            green = (int) (255 * Math.random());
             colorQuestion = Color.rgb(red, green, blue);
-            lred = (red + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
-            lgreen = (green + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
-            lblue = (blue + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
         }
-        int distance = Math.abs(lred - red) + Math.abs(lgreen - green) + Math.abs(lblue - blue);
+        lred = (int) (red + ((directionr ? 1 : -1) * Math.random() * rand_margin)) % 255 ;
+        lgreen = (int) (green + ((directiong ? 1 : -1) * Math.random() * rand_margin)) % 255 ;
+        lblue = (int) (blue + ((directionb ? 1 : -1) * Math.random() * rand_margin)) % 255 ;
         colorl = Color.rgb(lred, lgreen, lblue);
-        int rred = 0, rgreen = 0, rblue = 0;
-        while (rred + rgreen + rblue < 80) {
-            rred = (red + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
-            rgreen = (green + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
-            rblue = (blue + (Math.random() > 0.5 ? dist_margin : -dist_margin) + randomCentered(rand_margin)) % 255;
-        }
-        int distancer = Math.abs(rred - red) + Math.abs(rgreen - green) + Math.abs(rblue - blue);
-        if (distance == distancer) {
-            rred += 1;
-            rred %= 255;
-            distancer += 1;
-        }
+        int distance = Math.abs(lred - red) + Math.abs(lgreen - green) + Math.abs(lblue - blue);
+        int rred, rgreen, rblue;
+        rred = (lred + ((directionr ? 1 : -1) * dist_margin)) % 255;
+        rgreen = (lgreen + ((directionr ? 1 : -1) * dist_margin)) % 255;
+        rblue = (lblue + ((directionr ? 1 : -1) * dist_margin)) % 255;
         colorr = Color.rgb(rred, rgreen, rblue);
-        isLeft = distance < distancer;
-        milliLeft = fullTime * 1000;
+        int distancer = Math.abs(rred - red) + Math.abs(rgreen - green) + Math.abs(rblue - blue);
+        isLeft = Math.random() > 0.5;
+        if (distancer < distance) {
+            isLeft = !isLeft;
+        }
+        if (!isLeft) {
+            int temp = colorr;
+            colorr = colorl;
+            colorl = temp;
+        }
+        milliLeft = fullTime;
         displayTimeLeft = (milliLeft / 1000) + "";
         newQuestion = true;
-    }
-
-    private int randomCentered(int r) {
-        return (int) (2 * r * Math.random()) - r;
     }
 
     public int getQuestionColor() {
