@@ -24,8 +24,8 @@ public class GameState {
     public GameState(int startTime) {
         milliLeft = startTime * 1000;
         score = 0;
-        dist_margin = 80;
-        rand_margin = 80;
+        dist_margin = 60;
+        rand_margin = 60;
         life = 3;
         fullTime = startTime * 1000;
     }
@@ -33,14 +33,23 @@ public class GameState {
     public void makeQuestion() {
         int red = 0, blue = 0, green = 0;
         int lred, lgreen, lblue;
-        boolean directionr = Math.random() > 0.5;
-        boolean directiong = Math.random() > 0.5;
-        boolean directionb = Math.random() > 0.5;
-        while (red + green + blue < 50) {
+        while (red + green + blue < 120) {
             red = (int) (255 * Math.random());
             blue = (int) (255 * Math.random());
             green = (int) (255 * Math.random());
             colorQuestion = Color.rgb(red, green, blue);
+        }
+        boolean directionr = Math.random() > 0.5;
+        if ((directionr ? 1 : -1) * (rand_margin + dist_margin + red) >= 255 || (directionr ? 1 : -1) * (rand_margin + dist_margin + red) < 0) {
+            directionr = !directionr;
+        }
+        boolean directiong = Math.random() > 0.5;
+        if ((directiong ? 1 : -1) * (rand_margin + dist_margin + green) >= 255 || (directiong ? 1 : -1) * (rand_margin + dist_margin + green) < 0) {
+            directiong = !directiong;
+        }
+        boolean directionb = Math.random() > 0.5;
+        if ((directionb ? 1 : -1) * (rand_margin + dist_margin + blue) >= 255 || (directionb ? 1 : -1) * (rand_margin + dist_margin + blue) < 0) {
+            directionb = !directionb;
         }
         lred = (int) (red + ((directionr ? 1 : -1) * Math.random() * rand_margin)) % 255 ;
         lgreen = (int) (green + ((directiong ? 1 : -1) * Math.random() * rand_margin)) % 255 ;

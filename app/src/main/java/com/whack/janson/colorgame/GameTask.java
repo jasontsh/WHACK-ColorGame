@@ -25,7 +25,7 @@ public class GameTask extends AsyncTask<Void, GameState, Integer> {
     MainActivity activity;
 
     public GameTask(View l, View r, ImageView left, ImageView right, ImageView question,
-                    TextView timer, TextView score, TextView life, MainActivity activity) {
+                    TextView timer, TextView score, TextView life, final MainActivity activity) {
         this.left = left;
         this.right = right;
         this.question = question;
@@ -40,12 +40,14 @@ public class GameTask extends AsyncTask<Void, GameState, Integer> {
         l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                activity.start();
                 isClickl = true;
             }
         });
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                activity.start();
                 isClickr = true;
             }
         });
@@ -53,7 +55,7 @@ public class GameTask extends AsyncTask<Void, GameState, Integer> {
 
     @Override
     protected Integer doInBackground(Void... voids) {
-        GameState gameState = new GameState(10);
+        GameState gameState = new GameState(8);
         while (gameState.getLife() > 0) {
             gameState.makeQuestion();
             publishProgress(gameState);
